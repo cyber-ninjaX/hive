@@ -1,0 +1,25 @@
+# python
+*.py[co]
+
+# vim
+*.sw[op]
+
+# mac
+._*
+__MACOSX
+.DS_Store
+
+# win
+*~
+Thumbs.db
+desktop.ini
+
+# local settings
+/hive/settings/local.py
+
+# dev sqlite db
+/hive.db
+
+# pillar data
+/pillar/certs.sls
+/pillar/postgres.sls
