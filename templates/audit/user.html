@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block body %}
+<a href="/admin/auth/user/{{ audited_user.pk }}/">{{ audited_user }}</a> has
+access to:<br>
+<br>
+{% for password, groups in passwords.items %}
+    <a href="/admin/passwords/password/{{ password.pk }}/" >{{ password }}</a>
+    because (s)he is in the group(s):
+    {% for group in groups %}
+        <a href=/admin/auth/group/{{ group.pk }}/>{{ group }}</a>
+    {% endfor %}<br>
+{% empty %}
+    Nothing!
+{% endfor %}
+
+<h3>Passwords accessed by {{audited_user.username}}:</h3>
+{% for password_event in event_passwords %}
+<a href="{% url 'audit-event' password_event.pk %}">{{ password_event }}</a><br />
+{% endfor %}
+
+<h3>All requests made by {{audited_user.username}}:</h3>
+{% for event in audit_events %}
+<a href="{% url 'audit-event' event.pk %}">{{ event }}</a><br />
+{% endfor %}
+
+{% endblock body %}

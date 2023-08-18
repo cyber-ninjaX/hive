@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h3>Audit Event</h3>
+
+who: <a href="{% url 'audit-user' event.who.pk %}">{{ event.who }}</a><br />
+what: {{ event.what }}<br />
+when: {{ event.created }}<br />
+payload:<br />
+<pre>{{ event.payload }}</pre>
+
+{% endblock body %}

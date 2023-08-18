@@ -1,0 +1,50 @@
+<script type="text/javascript" charset="utf-8">
+(function ($) {
+    function reveal_pass(input) {
+        var $input = $(input),
+            text_input = $('<input type="text" />');
+        text_input.val($input.val());
+        text_input.attr('id', $input.attr('id'));
+        text_input.attr('name', $input.attr('name'));
+        text_input.attr('maxlength', $input.attr('maxlength'));
+        $input.replaceWith(text_input);
+        return text_input;
+    }
+
+    function hide_pass(input) {
+        var $input = $(input),
+            pass_input = $('<input type="password" />');
+        pass_input.val($input.val());
+        pass_input.attr('id', $input.attr('id'));
+        pass_input.attr('name', $input.attr('name'));
+        pass_input.attr('maxlength', $input.attr('maxlength'));
+        $input.replaceWith(pass_input);
+        return pass_input;
+    }
+
+    $('input[type="password"]').each(function () {
+        var that = $(this),
+            reveal_btn = $('<a href="javascript:void(0)">Reveal</a>'),
+            copy_btn = $('<a href="javascript:void(0)" class="copy-password" data-clipboard-target="' + that.attr('id') + '">Copy Password</a>');
+        reveal_btn.toggle(function () {
+            that = reveal_pass(that);
+            reveal_btn.text('Hide');
+            window.setTimeout(function () {
+                if (that.attr('type') === 'text') {
+                    reveal_btn.click();
+                }
+            }, 10000);
+            return false;
+        }, function () {
+            that = hide_pass(that);
+            reveal_btn.text('Reveal');
+            return false;
+        });
+        that.after(copy_btn);
+        that.after('&nbsp;&nbsp;&nbsp;');
+        that.after(reveal_btn);
+        that.after('&nbsp;');
+        that.parent().css('white-space', 'nowrap');
+    });
+})(window.django.jQuery);
+</script>

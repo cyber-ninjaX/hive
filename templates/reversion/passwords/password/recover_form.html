@@ -1,0 +1,7 @@
+{% extends "reversion/recover_form.html" %}
+
+{% block after_related_objects %}{{ block.super }}
+
+{% include "passwords/reveal_toggle.html" %}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'The Hive' %}{% endblock %}
+
+{% block extrahead %}
+<link rel="icon" type="image/png" href="/static/images/favicon.png" />
+<meta http-equiv="refresh" content="86400"/>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="/">{% trans 'The Hive' %}</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

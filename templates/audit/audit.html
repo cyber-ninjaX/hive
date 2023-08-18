@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="col-md-4">
+<h2>Superusers ({{ superusers.count }})</h2>
+{% for user in superusers %}
+<a href="/admin/auth/user/{{ user.pk }}/">{{ user }}</a>
+<a href="/audit/user/{{ user.pk }}/">- audit</a><br>
+{% endfor %}
+</div>
+
+<div class="col-md-4">
+<h2>Normal Users ({{ normoids.count }})</h2>
+{% for user in normoids %}
+<a href="/audit/user/{{ user.pk }}/">{{ user }}</a><br>
+{% endfor %}
+</div>
+
+<div class="col-md-4">
+<h2>Groups ({{ groups.count }})</h2>
+{% for group in groups %}
+<a href="/audit/group/{{ group.pk }}/">{{ group }}</a><br>
+{% endfor %}
+</div>
+
+<div class="col-md-12">
+<h2>Passwords ({{ passwords.count }})</h2>
+{% for password in passwords %}
+<a href="/audit/password/{{ password.pk }}/">{{ password }}</a>
+    is owned by:
+    {% for group in password.owned_by.all %}
+        <a href="/audit/group/{{ group.pk }}/">{{ group }}</a>
+    {% endfor %}<br>
+{% endfor %}
+</div>
+
+{% endblock body %}

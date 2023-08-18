@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <a href="/admin/auth/group/{{ audited_group.pk }}/">
+        {{ audited_group }}</a> contains the following users:<br>
+    <br>
+
+    {% for user in audited_group.user_set.all %}
+        <a href="/admin/auth/user/{{ user.pk }}/" >{{ user }}</a><br>
+    {% empty %}
+        Nobody!
+    {% endfor %}
+    <br>
+    and the following passwords:<br>
+    <br>
+    {% for password in audited_group.password_set.all %}
+        <a href="/admin/passwords/password/{{ password.pk }}/">{{ password }}</a><br>
+    {% empty %}
+        None!
+    {% endfor %}
+
+{% endblock body %}
