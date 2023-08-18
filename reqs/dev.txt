@@ -1,0 +1,9 @@
+-r base.txt
+mock==2.0.0
+pytest==3.4.1
+pytest-cov==2.5.1)
+Fabric==1.14.0
+-e git://github.com/pelme/pytest_django.git@154bc2dfabd663507719c3976950adc446c76d7c#egg=pytest_django-dev
+-e git://github.com/django-debug-toolbar/django-debug-toolbar.git@599d76e41c5728c0e342d55250690b2694bd2aad#egg=django_debug_toolbar-dev
+Werkzeug==0.14.1
+django-extensions==1.6.7

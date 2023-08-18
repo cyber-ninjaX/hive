@@ -1,0 +1,23 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# loopback
+auto lo
+iface lo inet loopback
+
+# backend
+auto eth0
+iface eth0 inet static
+    address 10.42.42.81
+    netmask 255.255.255.0
+
+# mgmt
+auto eth0.4011
+iface eth0.4011 inet static
+    address 10.44.44.34
+    netmask 255.255.255.0
+    gateway 10.44.44.1
+    dns-nameservers 8.8.8.8 8.8.4.4
+    vlan-raw-device eth0
